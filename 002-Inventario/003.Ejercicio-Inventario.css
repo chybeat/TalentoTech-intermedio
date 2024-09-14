@@ -1,0 +1,130 @@
+/*Estilos de ejercicio*/
+
+header {
+	text-align: center;
+}
+
+section {
+	padding: 1em;
+	margin: 2em auto;
+	width: fit-content;
+	max-width: 100%;
+}
+
+/* seccion del fomulario */
+#form-wrapper,
+#table-wrapper {
+	border: 1px solid var(--border-color);
+	border-radius: 0.5em;
+}
+
+#form-wrapper input[type="submit"] {
+	display: block;
+	margin: 0 auto;
+}
+
+#agregar-producto {
+	text-align: center;
+	margin-bottom: 2em;
+}
+
+#agregar-producto input[type=submit] {
+	width: fit-content;
+}
+
+/* seccion del mensaje */
+#message-wrapper {
+	padding: 1em;
+	text-align: center;
+	background-color: #6b5f164d;
+	;
+	border-radius: 0.5em;
+}
+
+#message-wrapper * {
+	display: inline-block;
+}
+
+#message-wrapper.new-message {
+	animation-duration: 300ms;
+	animation-iteration-count: 4;
+	animation-name: resaltar-fondo;
+}
+
+@keyframes resaltar-fondo {
+	0% {
+		background-color: #6b5f164d;
+	}
+
+	50% {
+		background-color: transparent;
+
+	}
+
+	100% {
+		background-color: #6b5f164d;
+	}
+}
+
+
+/* seccion de la tabla */
+#table-wrapper {
+	overflow-x: auto;
+}
+
+#table-wrapper #tabla {
+	border-radius: 0.5em;
+	margin: 2em auto;
+	border-collapse: collapse;
+}
+
+#tabla td,
+#tabla th {
+	padding: 1em
+}
+
+#tabla th {
+	border-bottom: 1px solid var(--border-color);
+	font-size: 1.3em;
+}
+
+#tabla tbody tr {
+	border-collapse: collapse;
+	border-top: 1px dotted var(--border-color)
+}
+
+#tabla thead {
+	background-color: #2f2f2f;
+	;
+}
+
+#tabla tr td:nth-child(2),
+#tabla tr td:nth-child(3) {
+	text-align: center;
+
+}
+
+#tabla tr td:nth-child(4) {
+	text-align: right;
+	padding: 1em;
+}
+
+#tabla .inventario-eliminar {
+	background-color: #b73737;
+	color: #b3b3b3;
+
+
+}
+
+#tabla .inventario-eliminar:hover {
+	border-color: #b73737;
+	box-shadow: none;
+	color: #FFF;
+}
+
+@media screen and (max-width:400px) {
+	body {
+		font-size: 1.4rem;
+		padding: 1em;
+	}
+}

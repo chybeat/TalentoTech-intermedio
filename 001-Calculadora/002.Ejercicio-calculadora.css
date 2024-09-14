@@ -1,0 +1,58 @@
+/*Estilos de ejercicio*/
+
+button {
+	max-width: 7em;
+}
+
+.buttons,
+.inputs {
+	display: flex;
+	flex-direction: column;
+}
+
+.buttons-line {
+	text-align: center;
+}
+
+.input-line {
+	text-align: center;
+}
+
+#resultado,
+header {
+	color: var(--bright-text-color);
+	font-size: 1.25em;
+	margin: 0 auto;
+	max-width: 32em;
+	text-align: center;
+}
+
+#resultado .operRes {
+	white-space: pre;
+}
+
+#resultado h2 {
+	margin: 1em;
+}
+
+.input-error {
+	animation-duration: 300ms;
+	animation-iteration-count: 4;
+	animation-name: resaltar-error-borde;
+	border: 2px solid var(--error-color);
+}
+
+@keyframes resaltar-error-borde {
+	0% {
+		border-color: transparent;
+	}
+
+	50% {
+		border-color: var(--error-color);
+
+	}
+
+	100% {
+		border-color: transparent;
+	}
+}

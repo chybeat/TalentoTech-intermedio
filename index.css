@@ -1,0 +1,202 @@
+/* Estilos globales (mi 'normalize')*/
+
+:root {
+	--background-box: #2d2d2d;
+	--border-color: #ab9c9c;
+	--bright-text-color: #d4d4e7;
+	--error-color: #af0202;
+	--footer-height: 10rem;
+	--text-color: #89899b;
+	--button-color: #3771c8
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+h1 {
+	margin: 0 auto;
+	padding: 1em 0 0 0;
+	text-align: center;
+}
+
+body {
+	background-color: #1f1f1f;
+	color: var(--text-color);
+	font-family: sans-serif;
+	font-size: 1.6em;
+	min-height: 100dvh;
+	position: relative;
+}
+
+main {
+	padding-bottom: var(--footer-height);
+}
+
+footer {
+	background-color: var(--background-box);
+	border-top: 1px solid var(--border-color);
+	bottom: 0;
+	padding: 1em;
+	position: absolute;
+	width: 100%;
+	height: var(--footer-height)
+}
+
+footer menu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+footer menu li {
+	display: flex;
+}
+
+footer menu li .button__link {
+	color: var(--bright-text-color);
+	background-color: var(--button-color);
+	border-radius: 0.5em;
+	text-decoration: none;
+}
+
+footer menu li .button__link:hover {
+	color: var(--background-box);
+}
+
+input {
+	background-color: var(--background-box);
+	border-radius: 0.25em;
+	border: solid 2px var(--border-color);
+	color: var(--bright-text-color);
+	font-size: 1.25em;
+	outline: none;
+	padding: .75em;
+	margin: 1em;
+}
+
+
+input:focus {
+	box-shadow: 0px 0px 5px 2px #6d6d6d;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type=number] {
+	/* Firefox */
+	appearance: textfield;
+}
+
+.button {
+	background-color: var(--text-color);
+	border: solid 2px var(--border-color);
+	border-radius: 0.25em;
+	color: #000;
+	font-size: 1.25em;
+	margin: 0.5em;
+	padding: 0.5em 1em;
+	transition: all 50ms;
+	width: 100%;
+}
+
+.button:hover,
+button.btn_selected {
+	background-color: var(--bright-text-color);
+	border-color: var(--bright-text-color);
+	box-shadow: 0px 0px 5px 2px #6d6d6d;
+	cursor: pointer;
+	transform: scale(105%);
+	transition: all 50ms;
+}
+
+/* Estilos de la página principal*/
+
+:root {
+	--content-width: 960px;
+}
+
+#ejercicios {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	justify-content: center;
+}
+
+.content-wrapper {
+	padding: 2em;
+}
+
+.content-width {
+	margin: 0 auto;
+	width: var(--content-width)
+}
+
+.card {
+	align-items: center;
+	border-radius: 1em;
+	border: 1px solid var(--border-color);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 0 1em 2em;
+	max-width: 45em;
+}
+
+.card:hover {
+	color: #d4d4e7;
+	background-color: var(--background-box);
+	border-color: var(--text-color);
+	box-shadow: 0 0 19px 6px #00000082;
+}
+
+.card h2 {
+	padding: 1.5em;
+	text-align: center;
+	width: 100%;
+}
+
+.card figure {
+	margin-right: 2em;
+	text-align: center;
+}
+
+.card figure img {
+	height: 128px;
+}
+
+.card figure p {
+	font-size: 1.2rem;
+	text-align: center;
+}
+
+.card>p {
+	width: 20em;
+}
+
+.card .enlaces {
+	margin-top: 2em;
+	text-align: center;
+	width: 100%
+}
+
+.card .enlaces a {
+	display: inline-block;
+}
+
+.card .enlaces a img:hover {
+	filter: drop-shadow(0px 0px 4px #7b7b7b);
+}
+
+.card .enlaces h3 {
+	padding: 2em 1em 1em;
+}

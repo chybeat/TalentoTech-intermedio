@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inventario - Camilo Salazar</title>
+	<link rel="stylesheet" href="../index.css">
+	<link rel="stylesheet" href="003.Ejercicio-Inventario.css">
+	<script src="003.Ejercicio-Inventario.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1>Inventario de papelería</h1>
+		<p><sup>*Se inicializa el inventario con un algunos elementos desde JavaScript</sup>
+		</p>
+	</header>
+	<main>
+		<section id="form-wrapper">
+			<form id="agregar-producto" onsubmit="return false;">
+				<h2>Agregar un nuevo producto</h2>
+				<input type="text" name="nombre" id="nombre" required placeholder="Producto">
+				<input type="number" name="cantidad" id="cantidad" required placeholder="Cantidad">
+				<input type="number" name="precio" id="precio" required placeholder="Precio de venta" step="0.01">
+				<input type="submit" class="button" value="Agregar">
+			</form>
+
+			<div id="message-wrapper">
+				<p id="mensaje"></p>
+			</div>
+		</section>
+		<section id="table-wrapper">
+
+			<table id="tabla">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Precio de venta</th>
+						<th>Cantidad</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</section>
+	</main>
+	<footer>
+		<menu type="context">
+			<li>
+				<a target="_blank" href="https://github.com/chybeat/TalentoTech-intermedio/tree/main/002-Inventario" class="button button__link">Ver archivos</a>
+			</li>
+			<li>
+				<a href="../" class="button button__link">Ejercicios</a>
+			</li>
+			<li>
+				<a href="https://github.com/chybeat/TalentoTech-intermedio" class="button button__link">Repositorio</a>
+			</li>
+		</menu>
+	</footer>
+
+</body>
+
+</html>
