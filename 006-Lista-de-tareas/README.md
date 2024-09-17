@@ -17,9 +17,11 @@ svg.button__js .button:hover .button-text{fill: #1a1a1a}
 # Inventario
 ***Fecha**: Septiembre 9 de 2024 - Ejercicio 2*
 
-<a href="https://chybeat.github.io/TalentoTech-intermedio/002-Inventario"><img src="../assets/inventario.svg" height="256" alt="icono inventario"></a>
+<a href="https://github.com/html"><img src="https://www.svgrepo.com/show/375469/os-inventory-management.svg" height="256" alt="icono inventario"></a>
 
-El objetivo es realizar una inerfaz para el manejo del inventario en una papelría donde se puedan agregar nuevos productos, eliminar y consultar los elementos actuales en el inventario.
+Crear una página para una lista de tareas, el usuario podrá adicionar una cada vez. La lista completa deberá desplegarse en la misma página.
+
+Crear metodos para modificar esta lista de tareas
 
 <a href="https://chybeat.github.io/TalentoTech-intermedio/002-Inventario/">
 <svg version="1.1"height="32" viewBox="0 0 100 32" xmlns="http://www.w3.org/2000/svg" alt="boton ver mas"><g class="button"><rect class="button-background" width="100" height="32" ry="3.8403"/><path class="button-text" d="m32.383 10.168h3.0235l3.0937 8.6094 3.0859-8.6094h3.0235l-4.3203 11.664h-3.586zm13.774 0h8.1171v2.2734h-5.1093v2.1719h4.8047v2.2734h-4.8047v2.6719h5.2812v2.2734h-8.289zm15.203 5.1719q0.9453 0 1.3515-0.35156 0.4141-0.35156 0.4141-1.1562 0-0.79687-0.4141-1.1406-0.4062-0.34375-1.3515-0.34375h-1.2656v2.9922zm-1.2656 2.0781v4.4141h-3.0079v-11.664h4.5938q2.3047 0 3.375 0.77344 1.0781 0.77343 1.0781 2.4453 0 1.1562-0.5625 1.8984-0.5547 0.74218-1.6797 1.0938 0.6172 0.14062 1.1016 0.64062 0.4922 0.49219 0.9922 1.5l1.6328 3.3125h-3.2031l-1.4219-2.8984q-0.4297-0.875-0.875-1.1953-0.4375-0.32031-1.1719-0.32031z"/></g></svg></a>

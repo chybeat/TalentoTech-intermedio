@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test console</title>
+	<style>
+		p {
+			margin: 0.25em 0;
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="result"></div>
+	<script>
+		function ordenarPorBurbuja(arreglito) {
+			let ordenado = false;
+
+			while (!ordenado) {
+				ordenado = true;
+				for (var i = 0; i < arreglito.length; i++) {
+					if (arreglito[i] < arreglito[i - 1]) {
+						let temp = arreglito[i];
+						arreglito[i] = arreglito[i - 1];
+						arreglito[i - 1] = temp;
+						ordenado = false;
+					}
+				}
+			}
+			return arreglito
+		}
+
+		function createArrays(length) {
+			let i = 0
+			const collection = []
+			while (i < length) {
+				for (i; i < length; i++) {
+					collection[i] = []
+					for (let j = 0; j < i + 1; j++) {
+						let number = parseInt(Math.random() * 10000)
+						while (!collection[i].includes(number)) {
+							collection[i].push(number)
+						}
+					}
+				}
+			}
+			return collection
+		}
+		console.log('Generando arrays...')
+		const testArrays = createArrays(2000)
+		const result = document.getElementById('result')
+		console.log('realizando ordenamiento ordenando...')
+		for (var i = 0; i < testArrays.length; i++) {
+			const inicio_tiempo = performance.now();
+			ordenarPorBurbuja(testArrays[i])
+			const final_tiempo = performance.now();
+			let duracion = final_tiempo - inicio_tiempo;
+			duracion = parseFloat(parseInt(duracion * 1000) / 1000)
+
+			const paragraph = document.createElement('P')
+			paragraph.textContent = `${[i + 1]}=${duracion}`
+			result.append(paragraph)
+		}
+		console.log("terminado")
+	</script>
+</body>
+
+</html>
