@@ -34,6 +34,9 @@
 		}
 
 		function createArrays(length) {
+			if (length > 10000) {
+				length = 10000
+			}
 			let i = 0
 			const collection = []
 			while (i < length) {
@@ -49,22 +52,99 @@
 			}
 			return collection
 		}
-		console.log('Generando arrays...')
-		const testArrays = createArrays(2000)
-		const result = document.getElementById('result')
-		console.log('realizando ordenamiento ordenando...')
-		for (var i = 0; i < testArrays.length; i++) {
-			const inicio_tiempo = performance.now();
-			ordenarPorBurbuja(testArrays[i])
-			const final_tiempo = performance.now();
-			let duracion = final_tiempo - inicio_tiempo;
-			duracion = parseFloat(parseInt(duracion * 1000) / 1000)
+		// // Prueba de analisis para ordenamiento por burbuja
+		// console.log('Generando arrays...')
+		// const testArrays = createArrays(2000)
+		// const result = document.getElementById('result')
+		// console.log('realizando ordenamiento por burbuja...')
+		// for (var i = 0; i < testArrays.length; i++) {
+		// 	const inicio_tiempo = performance.now();
+		// 	ordenarPorBurbuja(testArrays[i])
+		// 	const final_tiempo = performance.now();
+		// 	let duracion = final_tiempo - inicio_tiempo;
+		// 	duracion = parseFloat(parseInt(duracion * 1000) / 1000)
+		// 	const paragraph = document.createElement('P')
+		// 	paragraph.textContent = `${[i + 1]}=${duracion}`
+		// 	result.append(paragraph)
+		// }
+		// console.log("terminado")
 
-			const paragraph = document.createElement('P')
-			paragraph.textContent = `${[i + 1]}=${duracion}`
-			result.append(paragraph)
+		function ordenarPorConteo(arr) {
+			const count = [];
+			const output = [];
+			let i = 0;
+			let max = Math.max(...arr);
+
+
+			for (i = 0; i <= max; i++) {
+				count[i] = 0;
+			}
+			for (i = 0; i < arr.length; i++) {
+				output[i] = 0;
+			}
+
+			for (i = 0; i < arr.length; i++) {
+				count[arr[i]]++;
+			}
+
+			for (i = 1; i < count.length; i++) {
+				count[i] += count[i - 1];
+			}
+
+			for (i = arr.length - 1; i >= 0; i--) {
+				output[--count[arr[i]]] = arr[i];
+			}
+
+			return output;
 		}
-		console.log("terminado")
+		// Prueba de analisis para ordenamiento por conteo
+		// console.log('Generando arrays...')
+		// const testArrays = createArrays(1000)
+		// const result = document.getElementById('result')
+		// console.log('realizando ordenamiento por conteo...')
+		// for (var i = 0; i < testArrays.length; i++) {
+		// 	const inicio_tiempo = performance.now();
+		// 	ordenarPorConteo(testArrays[i])
+		// 	const final_tiempo = performance.now();
+		// 	let duracion = final_tiempo - inicio_tiempo;
+		// 	duracion = parseFloat(parseInt(duracion * 1000) / 1000)
+		// 	const paragraph = document.createElement('P')
+		// 	paragraph.textContent = `${[i + 1]}=${duracion}`
+		// 	result.append(paragraph)
+		// }
+		// console.log("terminado")
+
+
+		function ordenarPorInsercion(arr) {
+			const len = arr.lenght;
+			const indice = 1;
+			while (indice < len) {
+				const key = arr[indice];
+				let anterior = indice - 1;
+				while (anterior >= 0 && arr[anterior] > key) {
+					arr[anterior + 1] = arr[anterior];
+					anterior = anterior - 1;
+				}
+				arr[anterior + 1] = key;
+				indice++;
+			}
+		}
+		// Prueba de analisis para ordenamiento por insercion
+		// console.log('Generando arrays...')
+		// const testArrays = createArrays(10000)
+		// const result = document.getElementById('result')
+		// console.log('realizando ordenamiento por insercion...')
+		// for (var i = 0; i < testArrays.length; i++) {
+		// 	const inicio_tiempo = performance.now();
+		// 	ordenarPorInsercion(testArrays[i])
+		// 	const final_tiempo = performance.now();
+		// 	let duracion = final_tiempo - inicio_tiempo;
+		// 	duracion = parseFloat(parseInt(duracion * 1000) / 1000)
+		// 	const paragraph = document.createElement('P')
+		// 	paragraph.textContent = `${[i + 1]}=${duracion}`
+		// 	result.append(paragraph)
+		// }
+		// console.log("terminado")
 	</script>
 </body>
 
