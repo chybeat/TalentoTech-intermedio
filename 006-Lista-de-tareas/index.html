@@ -4,10 +4,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Inventario - Camilo Salazar</title>
+	<title>Lista de tareas - Camilo Salazar</title>
 	<link rel="stylesheet" href="../index.css">
-	<link rel="stylesheet" href="003.Ejercicio-Inventario.css">
-	<script src="003.Ejercicio-Inventario.js"></script>
+	<link rel="stylesheet" href="./006-Lista-de-tareas.css">
+	<script src="./006-Lista-de-tareas.js"></script>
 </head>
 
 <body>
@@ -15,6 +15,47 @@
 		<h1>Lista de tareas🥵</h1>
 	</header>
 	<main>
+		<section id="panel-de-control">
+			<form id="agregar-tarea">
+				<label for="panel-tarea-nombre">
+					<span>Nombre<span>*</span></span>
+					<input type="text" placeholder="Nombre de tarea" required>
+				</label>
+				<label for="panel-fecha-hora">
+					<span>Fecha de terminación</span>
+					<input type="datetime-local" id="panel-fecha-hora" name="fecha-hora" min="2024-09-17T00:00">
+				</label>
+				<label for="panel-descripcion">
+					<span>Descripción</span>
+					<textarea placeholder="Ingresa la descripción de la tarea" cols="30" rows="3"></textarea>
+				</label>
+				<input type="submit" value="Agregar tarea">
+				<p class="requerido">*El nombre de la tarea es el único elemento requerido</p>
+			</form>
+		</section>
+		<section id="lista-tareas">
+			<table>
+				<thead>
+					<tr>
+						<th>Terminada (checkbox)</th>
+						<th>Tarea (etiqueta details)</th>
+						<th>Acciones 2 botones, modificar, eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</section>
+		<section id="acciones-espaciales">
+			<div id="accion-eliminar">
+				<button class="button">Eliminar la primera tarea</button>
+				<button class="button">Eliminar la ultima tarea</button>
+				<button class="button">Eliminar tareas terminadas</button>
+			</div>
+			<div id="accion-marcar">
+				<button class="button">Terminar la última tarea aregada</button>
+			</div>
+		</section>
 	</main>
 	<footer>
 		<menu type="context">

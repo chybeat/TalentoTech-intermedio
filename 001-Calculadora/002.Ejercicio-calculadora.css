@@ -14,6 +14,12 @@ button {
 	text-align: center;
 }
 
+.buttons-line button {
+	max-width: 13em;
+	color: #222222;
+	font-size: 1.25em;
+}
+
 .input-line {
 	text-align: center;
 }

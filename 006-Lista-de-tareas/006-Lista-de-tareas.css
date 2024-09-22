@@ -1,0 +1,96 @@
+section {
+	padding: 2em;
+}
+
+.button {
+	max-width: 15em;
+}
+
+#agregar-tarea {
+	border: 2px solid var(--border-color);
+	border-radius: 1em;
+	padding: 2em;
+	display: grid;
+	grid-template-areas:
+		"nombre fecha"
+		"desc  desc"
+		"agregar agregar"
+		"req req";
+	grid-template-rows: auto;
+	/* grid-template-columns: 150px 1fr; */
+}
+
+#agregar-tarea label {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	width: 19em;
+}
+
+#agregar-tarea label>span {
+	text-align: center;
+	display: block;
+	width: 100%;
+}
+
+
+#agregar-tarea label span span {
+	color: #e44d26;
+}
+
+#agregar-tarea label[for=panel-tarea-nombre] {
+	grid-area: nombre;
+	justify-self: end;
+}
+
+#agregar-tarea label[for="panel-fecha-hora"] {
+	grid-area: fecha;
+}
+
+#agregar-tarea label[for="panel-descripcion"] {
+	grid-area: desc;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
+}
+
+#agregar-tarea>input {
+	grid-area: agregar;
+	max-width: 15em;
+	margin: 1em auto;
+}
+
+#agregar-tarea textarea {
+	width: 28em
+}
+
+#agregar-tarea p {
+	grid-area: req;
+	margin: auto auto;
+}
+
+
+
+/* ::-webkit-datetime-edit */
+::-webkit-datetime-edit-fields-wrapper {
+	font-size: 1.25em;
+	color: #F00;
+}
+
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-fields-wrapper {
+	color: var(--text-color);
+}
+
+/* ::-webkit-datetime-edit-year-field */
+/* ::-webkit-datetime-edit-month-field */
+/* ::-webkit-datetime-edit-week-field */
+/* ::-webkit-datetime-edit-day-field */
+/* ::-webkit-datetime-edit-hour-field */
+/* ::-webkit-datetime-edit-minute-field */
+/* ::-webkit-datetime-edit-second-field */
+/* ::-webkit-datetime-edit-millisecond-field */
+/* ::-webkit-datetime-edit-ampm-field */
+/*  */
+/* ::-webkit-inner-spin-button */
+/* ::-webkit-calendar-picker-indicator */

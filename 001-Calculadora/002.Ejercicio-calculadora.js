@@ -1,49 +1,27 @@
 class Calculadora {
 	res = 0
 	operation = null
-	constructor(el) {
-		this.num1 = el.num1;
-		this.num2 = el.num2;
-		this.btn_sumar = el.btn_sumar;
-		this.btn_restar = el.btn_restar;
-		this.btn_multiplicar = el.btn_multiplicar;
-		this.btn_dividir = el.btn_dividir;
-		this.result = el.result;
-
-		//generate class triggers (user interactions)
-		this.triggers();
+	constructor(operation) {
+		this.num1 = document.getElementById("num1");
+		this.num2 = document.getElementById("num2");
+		this.buttons = document.querySelectorAll('button[data-operation]');
+		this.result = document.querySelector("#resultado .operRes");
+		if (!operation) {
+			//generate class triggers (user interactions on inputs)
+			this.mainTrigger();
+		} else {
+			this.operation = operation
+		}
 	}
 
 	//Error management
 	checkinputs() {
 		let text = "";
 
-		//Removing error styles from inputs
-		this.num1.classList.remove("input-error");
-		this.num2.classList.remove("input-error");
+		text += this.checkinputVaule(this.num1, 1)
+		text += this.checkinputVaule(this.num2, 2)
 
-		//check value for number 1 input
-		if (this.num1.value == "") {
-			text += "Hace falta el número 1.";
-			//delay to activate (appreciate) animation sytle in case of error
-			setTimeout(() => {
-				this.num1.classList.add("input-error");
-			}, 10);
-		}
-
-		//check value for number 2 input
-		if (this.num2.value == "") {
-			if (text != "") {
-				text += "\r\n";
-			}
-			text += "Hace falta el número 2.";
-			//delay to activate (appreciate) animation sytle in case of error
-			setTimeout(() => {
-				this.num2.classList.add("input-error");
-			}, 10);
-		}
-
-		// adding text to result if error occurs
+		// adding text to result if any number is missing
 		if (text != "") {
 			this.res = text;
 			this.n1 = "";
@@ -56,100 +34,54 @@ class Calculadora {
 		return true;
 	}
 
+	checkinputVaule(input, number) {
+		//Removing error styles from inputs
+		input.classList.remove("input-error");
+
+		//check value for input
+		if (input.value == "") {
+			setTimeout(() => {
+				input.classList.add("input-error");
+			}, 10);
+			return "Hace falta el número " + number + ".\n";
+			//delay to activate (appreciate) animation sytle in case of error
+		}
+		return ""
+	}
+
 	//Operations
-	suma() {
-		if (this.checkinputs()) {
-			this.res = this.n1 + this.n2;
-		}
-		this.operation = "suma";
-		this.write();
-		this.unselectButtons();
-		setTimeout(() => {
-			this.btn_sumar.classList.add("btn_selected");
-		}, 10);
-	}
 
-	resta() {
-		if (this.checkinputs()) {
-			this.res = this.n1 - this.n2;
-		}
-		this.operation = "resta"
-		this.write();
-		this.unselectButtons();
-		setTimeout(() => {
-			this.btn_restar.classList.add("btn_selected");
-		}, 10);
-
-	}
-
-	multiplicación() {
-		if (this.checkinputs()) {
-			this.res = this.n1 * this.n2;
-		}
-		this.operation = "multiplicación"
-		this.write();
-		this.unselectButtons()
-		setTimeout(() => {
-			this.btn_multiplicar.classList.add("btn_selected");
-		}, 10);
-	}
-
-	división() {
-		if (this.checkinputs()) {
-			if (this.num2.value == 0) {
-				this.res = "Error!. No se puede dividir por cero";
-				this.write();
-				return false
-			} else {
-				this.res = this.n1 / this.n2;
-			}
-		}
-		this.operation = "división"
-		this.write();
-		this.unselectButtons();
-		setTimeout(() => {
-			this.btn_dividir.classList.add("btn_selected");
-		}, 10);
-	}
 
 	//Button actions
-	triggers() {
-		//sumar
-		this.tr_sumar = this.suma.bind(this);
-		this.btn_sumar.addEventListener("click", this.tr_sumar, false);
-
-		//restar
-		this.tr_restar = this.resta.bind(this);
-		this.btn_restar.addEventListener("click", this.tr_restar, false);
-
-		//multiplicar
-		this.tr_multiplicar = this.multiplicación.bind(this);
-		this.btn_multiplicar.addEventListener("click", this.tr_multiplicar, false);
-
-		//dividir
-		this.tr_dividir = this.división.bind(this);
-		this.btn_dividir.addEventListener("click", this.tr_dividir, false);
-
+	mainTrigger() {
 		this.tr_auto = this.autoOperate.bind(this);
 		this.num1.addEventListener("keyup", this.tr_auto, false);
 		this.num2.addEventListener("keyup", this.tr_auto, false);
+
+		this.buttons.forEach(button => {
+			button.removeEventListener("click", this.tr_auto, false);
+		});
+		this.buttons.forEach(button => {
+			button.addEventListener("click", this.tr_auto, false);
+		});
 	}
 
-	autoOperate() {
+	autoOperate(ev) {
+		this.operation = ev.srcElement.dataset.operation || this.operation
 		if (this.operation != null) {
 			this.checkinputs();
 			switch (this.operation) {
 				case 'suma':
-					this.suma()
+					console.log((new Suma(this.n1, this.n2)).text)
 					break;
 				case 'resta':
-					this.resta()
+					console.log((new Resta(this.n1, this.n2)).text)
 					break;
 				case 'multiplicación':
-					this.multiplicación()
+					console.log((new Multiplicación(this.n1, this.n2)).text)
 					break;
 				case 'división':
-					this.división()
+					console.log((new División(this.n1, this.n2).text))
 					break;
 				default:
 					break;
@@ -157,11 +89,15 @@ class Calculadora {
 		}
 	}
 
-	unselectButtons() {
-		this.btn_sumar.classList.remove("btn_selected");
-		this.btn_restar.classList.remove("btn_selected");
-		this.btn_multiplicar.classList.remove("btn_selected");
-		this.btn_dividir.classList.remove("btn_selected");
+	checkbuttons(active) {
+		this.buttons.forEach(button => {
+			button.classList.remove("btn_selected");
+			if (button.dataset.operation == active) {
+				setTimeout(() => {
+					button.classList.add("btn_selected");
+				}, 10);
+			}
+		});
 	}
 
 	//Write operation result
@@ -174,23 +110,102 @@ class Calculadora {
 				opr_result = "La " + this.operation + " da: " + Math.round(this.res * 100000000) / 100000000
 		}
 		this.result.textContent = opr_result
+		this.checkbuttons(this.operation);
+	}
+
+	setNumbers(num1, num2) {
+		this.num1.value = num1 || this.num1.value || 0
+		this.num2.value = num2 || this.num2.value || 0
+	}
+
+	logResult() {
+		if (!isNaN(this.res)) {
+			this.res = Math.round(this.res * 100000000) / 100000000
+		}
+		return {
+			num1: this.n1,
+			num2: this.n2,
+			result: this.res,
+			operation: this.operation,
+			text: "La " + this.operation + " entre " + this.n1 + " y " + this.n2 + " da: " + this.res
+
+		}
+	}
+}
+
+class Suma extends Calculadora {
+	constructor(a, b) {
+		super("suma")
+		this.setNumbers(a, b)
+		return this.suma()
+	}
+
+	suma() {
+		if (this.checkinputs()) {
+			this.res = this.n1 + this.n2;
+		}
+		this.write();
+		return this.logResult()
+	}
+}
+
+class Resta extends Calculadora {
+	constructor(a, b) {
+		super("resta")
+		this.setNumbers(a, b)
+		return this.resta()
+	}
+
+	resta() {
+		if (this.checkinputs()) {
+			this.res = this.n1 - this.n2;
+		}
+		this.write();
+		return this.logResult()
+	}
+}
+
+class Multiplicación extends Calculadora {
+	constructor(a, b) {
+		super("multiplicación")
+		this.setNumbers(a, b)
+		return this.multiplicación()
+	}
+
+	multiplicación() {
+		if (this.checkinputs()) {
+			this.res = this.n1 * this.n2;
+		}
+		this.write();
+		return this.logResult()
+	}
+}
+
+class División extends Calculadora {
+	constructor(a, b) {
+		super("división")
+		this.setNumbers(a, b)
+		return this.división()
+	}
+
+	división() {
+		if (this.checkinputs()) {
+			if (this.num2.value == 0) {
+				this.res = "Error!. No se puede dividir por cero";
+				this.write();
+				return this.logResult()
+			} else {
+				this.res = this.n1 / this.n2;
+			}
+		}
+		this.write();
+		return this.logResult()
 	}
 }
 
 addEventListener("DOMContentLoaded", (e) => {
 	//Instantiate of calculadora class
-	const calc = new Calculadora({
-		//Set numbers inputs
-		num1: document.getElementById("num1"),
-		num2: document.getElementById("num2"),
+	const calc = new Calculadora()
 
-		//Set HTML action buttons
-		btn_sumar: document.getElementById("sumar"),
-		btn_restar: document.getElementById("restar"),
-		btn_multiplicar: document.getElementById("multiplicar"),
-		btn_dividir: document.getElementById("dividir"),
-
-		//Set result area
-		result: document.querySelector("#resultado .operRes")
-	})
+	console.log(new División(12.1, 0))
 }); 
