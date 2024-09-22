@@ -91,7 +91,9 @@ class Calculadora {
 
 	checkbuttons(active) {
 		this.buttons.forEach(button => {
-			button.classList.remove("btn_selected");
+			setTimeout(() => {
+				button.classList.remove("btn_selected");
+			}, 10);
 			if (button.dataset.operation == active) {
 				setTimeout(() => {
 					button.classList.add("btn_selected");
@@ -102,20 +104,19 @@ class Calculadora {
 
 	//Write operation result
 	write() {
-		let opr_result = ""
-		if (typeof this.res == "string") {
-			opr_result = this.res;
-		} else {
-			if (!isNaN(this.res))
-				opr_result = "La " + this.operation + " da: " + Math.round(this.res * 100000000) / 100000000
+		if (!isNaN(this.res)) {
+			this.res = Math.round(this.res * 100000000) / 100000000
 		}
-		this.result.textContent = opr_result
+		this.result_txt = "La " + this.operation + " da:\n"
+		this.result_txt += this.res
+
+		this.result.textContent = this.result_txt
 		this.checkbuttons(this.operation);
 	}
 
 	setNumbers(num1, num2) {
-		this.num1.value = num1 || this.num1.value || 0
-		this.num2.value = num2 || this.num2.value || 0
+		this.num1.value = num1.toString() || this.num1.value
+		this.num2.value = num2.toString() || this.num2.value
 	}
 
 	logResult() {
@@ -127,7 +128,7 @@ class Calculadora {
 			num2: this.n2,
 			result: this.res,
 			operation: this.operation,
-			text: "La " + this.operation + " entre " + this.n1 + " y " + this.n2 + " da: " + this.res
+			text: this.result_txt
 
 		}
 	}
@@ -207,5 +208,8 @@ addEventListener("DOMContentLoaded", (e) => {
 	//Instantiate of calculadora class
 	const calc = new Calculadora()
 
-	console.log(new División(12.1, 0))
+	//console.log(new División(18, 0))
+	//console.log(new Multiplicación(18, 0))
+	//console.log(new Resta(18, 0))
+	//console.log(new Suma(18, 0))
 }); 
